@@ -2,6 +2,8 @@
   "name": "t3m4",
   "private": true,
   "scripts": {
+    "CI": "turbo lint check-types format test build --filter=./packages/T3M4/*",
+    "release": "pnpm run CI && changeset publish",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
@@ -9,6 +11,7 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8",
     "typescript": "5.9.2"

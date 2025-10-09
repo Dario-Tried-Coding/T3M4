@@ -3,5 +3,19 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "material-icon-theme.folders.associations": {
+    "react": "React-components",
+    "T3M4": "../../../../icons/T3M4-folder"
+  },
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }
