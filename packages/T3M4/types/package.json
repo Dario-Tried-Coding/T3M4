@@ -1,0 +1,35 @@
+{
+  "name": "@t3m4/types",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Type definitions and shared utilities for all T3M4 modules — providing strong type-safety and schema inference across the theming engine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit"
+  },
+  "author": "dariotriedcoding",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dario-Tried-Coding/T3M4"
+  },
+  "keywords": [
+    "theming",
+    "typescript",
+    "types"
+  ],
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

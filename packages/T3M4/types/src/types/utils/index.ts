@@ -1,0 +1,1 @@
+export type LinientAutoComplete<T extends string> = T | (string & {});
