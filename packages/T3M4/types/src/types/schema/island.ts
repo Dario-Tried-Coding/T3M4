@@ -1,19 +1,19 @@
-import * as Schema_Facets from "./facets/facets";
+import * as Schema_Facets from "./facets";
 
 export type Generic = Partial<{ facets: { [facet: string]: Generic.Facets.Facet }; mode: Generic.Facets.Mode }>;
 export namespace Generic {
   export namespace Facets {
     export type Facet = Facet.Mono | Facet.Multi;
     export namespace Facet {
-      export type Mono = Schema_Facets.Facet.Generic.;
-      export type Multi = Schema_Facets.Facet.Generic;
+      export type Mono = Schema_Facets.Generic.Facet.Mono;
+      export type Multi = Schema_Facets.Generic.Facet.Multi;
     }
 
     export type Mode = Mode.Mono | Mode.Multi | Mode.System;
     export namespace Mode {
-      export type Mono = Schema_Mode.Generic;
-      export type Multi = Schema_Mode.Generic;
-      export type System = Schema_Mode.Generic;
+      export type Mono = Schema_Facets.Generic.Mode.Mono;
+      export type Multi = Schema_Facets.Generic.Mode.Multi;
+      export type System = Schema_Facets.Generic.Mode.System;
     }
   }
 }
@@ -23,16 +23,15 @@ export namespace Suggested {
   export namespace Facets {
     export type Facet = Facet.Mono;
     export namespace Facet {
-      export type Mono = Schema_Facet.Generic;
+      export type Mono = Schema_Facets.Suggested.Facet.Mono;
     }
 
     export type Mode = Mode.Mono | Mode.System;
     export namespace Mode {
-      export type Mono = Schema_Mode.Generic;
-      export type System = Schema_Mode.Generic;
+      export type Mono = Schema_Facets.Suggested.Mode.Mono;
+      export type System = Schema_Facets.Suggested.Mode.System;
     }
   }
 }
 
-export * as Facet from "./facets/facet";
-export * as Mode from "./facets/mode";
+export * as Facets from "./facets"
