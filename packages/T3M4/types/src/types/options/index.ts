@@ -18,18 +18,3 @@ export namespace Suggested {
 export * as Mono from "./mono";
 export * as Multi from "./multi";
 export * as System from "./system";
-
-// Options.Mono.Generic
-// Options.Mono.Suggested
-// Options.Multi.Generic
-// Options.System.Generic
-// Options.System.Suggested
-
-// Options.Generic
-// Options.Generic.Mono
-// Options.Generic.Multi
-// Options.Generic.System
-
-// Options.Suggested
-// Options.Suggested.Mono
-// Options.Suggested.System
