@@ -1,3 +1,8 @@
-import { Schema } from "./types";
+import type { Schema, State } from "./types";
 
-type test = Schema.Island
+const test = {
+  island: {
+    mode: ['custom']
+  }
+} as const satisfies Schema.Suggested
+type test = State<typeof test>

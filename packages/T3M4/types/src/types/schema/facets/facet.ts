@@ -6,9 +6,10 @@ export namespace Generic {
   export type Multi = Multi.Generic
 }
 
-export type Suggested = Suggested.Mono
+export type Suggested = Suggested.Mono | Suggested.Multi
 export namespace Suggested {
   export type Mono = Mono.Suggested
+  export type Multi = Multi.Generic
 }
 
 export { Mono, Multi } from "../../options"
