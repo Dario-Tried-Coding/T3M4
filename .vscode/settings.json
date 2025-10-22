@@ -1,13 +1,5 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "material-icon-theme.folders.associations": {
-    "react": "React-components",
-    "T3M4": "../../../../icons/T3M4-folder"
-  },
+  //formatting
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
@@ -17,5 +9,13 @@
     "source.organizeImports": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  //extensions
+  "material-icon-theme.folders.associations": {
+    "react": "React-components",
+    "state": "Atom",
+    "T3M4": "../../../../icons/T3M4-folder"
+  }
 }
