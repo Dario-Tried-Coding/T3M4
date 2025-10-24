@@ -16,6 +16,7 @@
   "material-icon-theme.folders.associations": {
     "react": "React-components",
     "state": "Atom",
+    "signatures": "Custom",
     "T3M4": "../../../../icons/T3M4-folder"
   }
 }

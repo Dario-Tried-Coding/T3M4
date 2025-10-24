@@ -1,18 +1,20 @@
-import { Facets } from "../../schema/island";
+import { Generic as Schema } from "../../schema/facets";
 
-export type Mode<Sc extends Facets.Generic.Mode> = Sc extends Facets.Generic.Mode.Mono
-  ? Mode.Mono<Sc>
-  : Sc extends Facets.Generic.Mode.Multi
-    ? Mode.Multi<Sc>
-    : Sc extends Facets.Generic.Mode.System
-      ? Mode.System<Sc>
+export type Dynamic<Sc extends Schema.Mode> = Sc extends Schema.Mode.Mono
+  ? Dynamic.Mono<Sc>
+  : Sc extends Schema.Mode.Multi
+    ? Dynamic.Multi<Sc>
+    : Sc extends Schema.Mode.System
+      ? Dynamic.System<Sc>
       : never;
-export namespace Mode {
-  export type Mono<Sc extends Facets.Generic.Mode.Mono> = Sc;
-  export type Multi<Sc extends Facets.Generic.Mode.Multi> = Sc[number];
-  export type System<Sc extends Facets.Generic.Mode.System> =
+export namespace Dynamic {
+  export type Mono<Sc extends Schema.Mode.Mono> = Sc;
+  export type Multi<Sc extends Schema.Mode.Multi> = Sc[number];
+  export type System<Sc extends Schema.Mode.System> =
     | Sc["light"]
     | Sc["dark"]
-    | (Sc extends Required<Pick<Facets.Generic.Mode.System, "system">> ? Sc["system"] : never)
-    | (Sc extends Required<Pick<Facets.Generic.Mode.System, "custom">> ? Sc["custom"][number] : never);
+    | (Sc extends Required<Pick<Schema.Mode.System, "system">> ? Sc["system"] : never)
+    | (Sc extends Required<Pick<Schema.Mode.System, "custom">> ? Sc["custom"][number] : never);
 }
+
+export type Static = string

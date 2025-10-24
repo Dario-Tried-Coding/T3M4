@@ -17,10 +17,5 @@ export namespace Dynamic {
   }
 }
 
-export namespace Static {
-  export type Facet = FacetNS.Static;
-  export type Mode = ModeNS.Static;
-}
-
 export * as Facet from "./facet";
 export * as Mode from "./mode";

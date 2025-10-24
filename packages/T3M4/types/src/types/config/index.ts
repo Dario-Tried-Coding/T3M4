@@ -26,4 +26,27 @@ export namespace Dynamic {
   }
 }
 
-export * as Island from "./island"
+export type Static = {
+  [island: string]: Static.Island;
+};
+export namespace Static {
+  export type Island = IslandNS.Static;
+  export namespace Island {
+    export namespace Facets {
+      export type Facet = IslandNS.Static.Facets.Facet;
+      export namespace Facet {
+        export type Mono = IslandNS.Static.Facets.Facet.Mono;
+        export type Multi = IslandNS.Static.Facets.Facet.Multi;
+      }
+    }
+
+    export type Mode = IslandNS.Static.Facets.Mode;
+    export namespace Mode {
+      export type Mono = IslandNS.Static.Facets.Mode.Mono;
+      export type Multi = IslandNS.Static.Facets.Mode.Multi;
+      export type System = IslandNS.Static.Facets.Mode.System;
+    }
+  }
+}
+
+export * as Island from "./island";

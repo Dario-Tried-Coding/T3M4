@@ -45,7 +45,7 @@ type IsMeaningfulFacet<F extends Generic.Facets.Facet> = F extends Generic.Facet
 type PolishedFacets<Fs extends Required<Generic>["facets"]> = keyof Fs extends never
   ? {}
   : {
-      [F in keyof Fs as IsMeaningfulFacet<Fs[F]> extends true ? F : never]: Fs[F];
+      -readonly [F in keyof Fs as IsMeaningfulFacet<Fs[F]> extends true ? F : never]: Fs[F];
     };
 type IsMeaningfulMode<M extends Generic.Facets.Mode> = M extends Generic.Facets.Mode.Multi
   ? IsEmptyArray<M> extends true

@@ -1,16 +1,18 @@
-import { Polished, Generic as Schema } from "../schema/island";
+import { Generic as Schema } from "../schema/island";
 import * as FacetsNS from "./facets";
 
-export type Dynamic<Sc extends Schema> = (keyof Polished<Sc> extends never
-  ? {}
-  : Polished<Sc> extends Required<Pick<Schema, "facets">>
+export type Dynamic<Sc extends Schema> = (Sc extends Required<Pick<Schema, "facets">>
+  ? {
+      facets: {
+        -readonly [F in keyof Sc["facets"]]: Dynamic.Facets.Facet<Sc["facets"][F]>;
+      };
+    }
+  : {}) &
+  (Sc extends Required<Pick<Schema, "mode">>
     ? {
-        facets: {
-          -readonly [F in keyof Polished<Sc>["facets"]]: Dynamic.Facets.Facet<Polished<Sc>["facets"][F]>;
-        };
+        mode: Dynamic.Facets.Mode<Sc["mode"]>;
       }
-    : {}) &
-  (Polished<Sc> extends Required<Pick<Schema, "mode">> ? { mode: Dynamic.Facets.Mode<Polished<Sc>["mode"]> } : {});
+    : {});
 export namespace Dynamic {
   export namespace Facets {
     export type Facet<Sc extends Schema.Facets.Facet> = FacetsNS.Dynamic.Facet<Sc>;
@@ -30,15 +32,25 @@ export namespace Dynamic {
 
 export type Static = {
   facets?: {
-    [facet: string]: Static.Facets.Facet
-  }
-  mode?: Static.Facets.Mode
-}
+    [facet: string]: Static.Facets.Facet;
+  };
+  mode?: Static.Facets.Mode;
+};
 export namespace Static {
   export namespace Facets {
-    export type Facet = FacetsNS.Static.Facet
-    export type Mode = FacetsNS.Static.Mode
+    export type Facet = FacetsNS.Static.Facet;
+    export namespace Facet {
+      export type Mono = FacetsNS.Static.Facet.Mono;
+      export type Multi = FacetsNS.Static.Facet.Multi;
+    }
+
+    export type Mode = FacetsNS.Static.Mode;
+    export namespace Mode {
+      export type Mono = FacetsNS.Static.Mode.Mono;
+      export type Multi = FacetsNS.Static.Mode.Multi;
+      export type System = FacetsNS.Static.Mode.System;
+    }
   }
 }
 
-export * as Facets from "./facets"
+export * as Facets from "./facets";

@@ -41,9 +41,13 @@ export namespace Dynamic {
     Color_Schemes<Sc>;
 }
 
-export type Static = never
+export type Static = Static.Mono | Static.Multi | Static.System;
 export namespace Static {
-  export type Mono = Base & { strategy: STRATS['mono'], default: string, colorScheme: COLOR_SCHEME}
-  export type Multi = Base & { strategy: STRATS['multi'], default: string, colorSchemes: Record<string, COLOR_SCHEME> }
-  export type System = Base & { strategy: STRATS['system'], default: string, colorSchemes?: Record<string, COLOR_SCHEME> }
+  export type Mono = Base & { strategy: STRATS["mono"]; default: string; colorScheme: COLOR_SCHEME };
+  export type Multi = Base & { strategy: STRATS["multi"]; default: string; colorSchemes: Record<string, COLOR_SCHEME> };
+  export type System = Base & {
+    strategy: STRATS["system"];
+    default: string;
+    colorSchemes?: Record<string, COLOR_SCHEME>;
+  };
 }

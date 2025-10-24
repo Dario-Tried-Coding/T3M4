@@ -1,11 +1,13 @@
-import { Facets } from "../../schema/island";
+import { Generic as Schema } from "../../schema/facets";
 
-export type Facet<Sc extends Facets.Generic.Facet> = Sc extends Facets.Generic.Facet.Mono
-  ? Facet.Mono<Sc>
-  : Sc extends Facets.Generic.Facet.Multi
-    ? Facet.Multi<Sc>
+export type Dynamic<Sc extends Schema.Facet> = Sc extends Schema.Facet.Mono
+  ? Dynamic.Mono<Sc>
+  : Sc extends Schema.Facet.Multi
+    ? Dynamic.Multi<Sc>
     : never;
-export namespace Facet {
-  export type Mono<Sc extends Facets.Generic.Facet.Mono> = Sc;
-  export type Multi<Sc extends Facets.Generic.Facet.Multi> = Sc[number];
+export namespace Dynamic {
+  export type Mono<Sc extends Schema.Facet.Mono> = Sc;
+  export type Multi<Sc extends Schema.Facet.Multi> = Sc[number];
 }
+
+export type Static = string
