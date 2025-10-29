@@ -18,9 +18,9 @@ export type STRATS = {
 };
 export type STRAT = STRATS[keyof STRATS];
 
-export type CONTROLLER = {
+export type CS_INDICATORS = {
   class: "class"
   data_attribute: 'data-attribute',
   attribute: 'attribute'
 }
-export type CS_INDICATOR = CONTROLLER[keyof CONTROLLER];
+export type CS_INDICATOR = CS_INDICATORS[keyof CS_INDICATORS];

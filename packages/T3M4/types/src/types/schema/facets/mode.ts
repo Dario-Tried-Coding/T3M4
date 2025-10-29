@@ -1,17 +1,24 @@
-import { Mono, Multi, System } from "../../signatures";
+import type { Signatures } from "../../signatures";
 
-export type Generic = Generic.Mono | Generic.Multi | Generic.System;
-export namespace Generic {
-  export type Mono = Mono.Generic;
-  export type Multi = Multi.Generic;
-  export type System = System.Generic;
+export namespace Mode_Schema {
+  export type Generic = Generic.Mono | Generic.Multi | Generic.System;
+  export namespace Generic {
+    export type Mono = Signatures.Mono.Generic;
+    export type Multi = Signatures.Multi.Generic;
+    export type System = Signatures.System.Generic;
+  }
+
+  export type Suggested = Suggested.Mono | Suggested.Multi | Suggested.System;
+  export namespace Suggested {
+    export type Mono = Signatures.Mono.Suggested;
+    export type Multi = Signatures.Multi.Generic
+    export type System = Signatures.System.Suggested;
+  }
+
+  export type Readonly = Readonly.Mono | Readonly.Multi | Readonly.System;
+  export namespace Readonly {
+    export type Mono = Signatures.Mono.Generic;
+    export type Multi = Signatures.Multi.Readonly;
+    export type System = Signatures.System.Readonly;
+  }
 }
-
-export type Suggested = Suggested.Mono | Suggested.Multi | Suggested.System;
-export namespace Suggested {
-  export type Mono = Mono.Suggested;
-  export type Multi = Multi.Generic;
-  export type System = System.Suggested;
-}
-
-export { Mono, Multi, System } from "../../signatures";

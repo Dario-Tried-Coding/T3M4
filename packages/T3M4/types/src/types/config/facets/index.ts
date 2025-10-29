@@ -1,36 +1,65 @@
-import { Generic as Schema } from "../../schema/facets"
-import * as FacetNS from "./facet"
-import * as ModeNS from "./mode"
+import type { Facets_Schema as Schema } from "../../schema/facets";
+import type { Facet_Config } from "./facet";
+import type { Mode_Config } from "./mode";
 
-export namespace Dynamic {
-  export type Facet<Sc extends Schema.Facet> = FacetNS.Dynamic<Sc>
-  export namespace Facet {
-    export type Mono<Sc extends Schema.Facet.Mono> = FacetNS.Dynamic.Mono<Sc>
-    export type Multi<Sc extends Schema.Facet.Multi> = FacetNS.Dynamic.Multi<Sc>
+export namespace Facets_Config {
+  export namespace Dynamic {
+    export type Facet<Sc extends Schema.Generic.Facet> = Facet_Config.Dynamic<Sc>;
+    export namespace Facet {
+      export type Mono<Sc extends Schema.Generic.Facet.Mono> = Facet_Config.Dynamic.Mono<Sc>;
+      export type Multi<Sc extends Schema.Generic.Facet.Multi> = Facet_Config.Dynamic.Multi<Sc>;
+    }
+
+    export type Mode<Sc extends Schema.Generic.Mode> = Mode_Config.Dynamic<Sc>;
+    export namespace Mode {
+      export type Mono<Sc extends Schema.Generic.Mode.Mono> = Mode_Config.Dynamic.Mono<Sc>;
+      export type Multi<Sc extends Schema.Generic.Mode.Multi> = Mode_Config.Dynamic.Multi<Sc>;
+      export type System<Sc extends Schema.Generic.Mode.System> = Mode_Config.Dynamic.System<Sc>;
+    }
   }
 
-  export type Mode<Sc extends Schema.Mode> = ModeNS.Dynamic<Sc>
+  export namespace Static {
+    export type Facet = Facet_Config.Static;
+    export namespace Facet {
+      export type Mono = Facet_Config.Static.Mono;
+      export type Multi = Facet_Config.Static.Multi;
+    }
+
+    export type Mode = Mode_Config.Static;
+    export namespace Mode {
+      export type Mono = Mode_Config.Static.Mono;
+      export type Multi = Mode_Config.Static.Multi;
+      export type System = Mode_Config.Static.System;
+    }
+  }
+
+  export namespace Facet {
+    export type Dynamic<Sc extends Schema.Generic.Facet> = Facet_Config.Dynamic<Sc>;
+    export namespace Dynamic {
+      export type Mono<Sc extends Schema.Generic.Facet.Mono> = Facet_Config.Dynamic.Mono<Sc>;
+      export type Multi<Sc extends Schema.Generic.Facet.Multi> = Facet_Config.Dynamic.Multi<Sc>;
+    }
+
+    export type Static = Facet_Config.Static;
+    export namespace Static {
+      export type Mono = Facet_Config.Static.Mono;
+      export type Multi = Facet_Config.Static.Multi;
+    }
+  }
+
   export namespace Mode {
-    export type Mono<Sc extends Schema.Mode.Mono> = ModeNS.Dynamic.Mono<Sc>
-    export type Multi<Sc extends Schema.Mode.Multi> = ModeNS.Dynamic.Multi<Sc>
-    export type System<Sc extends Schema.Mode.System> = ModeNS.Dynamic.System<Sc>
+    export type Dynamic<Sc extends Schema.Generic.Mode> = Mode_Config.Dynamic<Sc>;
+    export namespace Dynamic {
+      export type Mono<Sc extends Schema.Generic.Mode.Mono> = Mode_Config.Dynamic.Mono<Sc>;
+      export type Multi<Sc extends Schema.Generic.Mode.Multi> = Mode_Config.Dynamic.Multi<Sc>;
+      export type System<Sc extends Schema.Generic.Mode.System> = Mode_Config.Dynamic.System<Sc>;
+    }
+
+    export type Static = Mode_Config.Static;
+    export namespace Static {
+      export type Mono = Mode_Config.Static.Mono;
+      export type Multi = Mode_Config.Static.Multi;
+      export type System = Mode_Config.Static.System;
+    }
   }
 }
-
-export namespace Static {
-  export type Facet = FacetNS.Static
-  export namespace Facet {
-    export type Mono = FacetNS.Static.Mono
-    export type Multi = FacetNS.Static.Multi
-  }
-
-  export type Mode = ModeNS.Static
-  export namespace Mode {
-    export type Mono = ModeNS.Static.Mono
-    export type Multi = ModeNS.Static.Multi
-    export type System = ModeNS.Static.System
-  }
-}
-
-export * as Facet from "./facet"
-export * as Mode from "./mode"

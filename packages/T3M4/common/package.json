@@ -1,8 +1,8 @@
 {
-  "name": "@t3m4/types",
+  "name": "@t3m4/common",
   "version": "0.0.0",
   "private": false,
-  "description": "Type definitions and shared utilities for all T3M4 modules — providing strong type-safety and schema inference across the theming engine.",
+  "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -24,13 +24,13 @@
   },
   "keywords": [
     "theming",
-    "typescript",
-    "types"
+    "typescript"
   ],
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "tsup": "^8.3.6",
+    "@t3m4/types": "workspace:*",
+    "tsup": "^8.5.0",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
   }

@@ -1,3 +1,6 @@
-import * as Mono from "./mono";
+import type { Mono_Signatures } from "./mono";
 
-export type Generic = Mono.Generic[]
+export namespace Multi_Signatures {
+  export type Generic = Mono_Signatures.Generic[];
+  export type Readonly = readonly Mono_Signatures.Generic[];
+}

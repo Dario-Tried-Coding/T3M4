@@ -1,35 +1,92 @@
-import * as FacetNS from "./facet";
-import * as ModeNS from "./mode";
+import type { Facet_Schema } from "./facet";
+import type { Mode_Schema } from "./mode";
 
-export namespace Generic {
-  export type Facet = Facet.Mono | Facet.Multi;
-  export namespace Facet {
-    export type Mono = FacetNS.Generic.Mono
-    export type Multi = FacetNS.Generic.Multi
+export namespace Facets_Schema {
+  export namespace Generic {
+    export type Facet = Facet_Schema.Generic;
+    export namespace Facet {
+      export type Mono = Facet_Schema.Generic.Mono;
+      export type Multi = Facet_Schema.Generic.Multi;
+    }
+
+    export type Mode = Mode_Schema.Generic;
+    export namespace Mode {
+      export type Mono = Mode_Schema.Generic.Mono;
+      export type Multi = Mode_Schema.Generic.Multi;
+      export type System = Mode_Schema.Generic.System;
+    }
   }
 
-  export type Mode = Mode.Mono | Mode.Multi | Mode.System;
+  export namespace Suggested {
+    export type Facet = Facet_Schema.Suggested;
+    export namespace Facet {
+      export type Mono = Facet_Schema.Suggested.Mono;
+      export type Multi = Facet_Schema.Suggested.Multi;
+    }
+
+    export type Mode = Mode_Schema.Suggested;
+    export namespace Mode {
+      export type Mono = Mode_Schema.Suggested.Mono;
+      export type Multi = Mode_Schema.Suggested.Multi;
+      export type System = Mode_Schema.Suggested.System;
+    }
+  }
+
+  export namespace Readonly {
+    export type Facet = Facet_Schema.Readonly;
+    export namespace Facet {
+      export type Mono = Facet_Schema.Readonly.Mono;
+      export type Multi = Facet_Schema.Readonly.Multi;
+    }
+
+    export type Mode = Mode_Schema.Readonly
+    export namespace Mode {
+      export type Mono = Mode_Schema.Readonly.Mono;
+      export type Multi = Mode_Schema.Readonly.Multi;
+      export type System = Mode_Schema.Readonly.System;
+    }
+  }
+
+  export namespace Facet {
+    export type Generic = Facet_Schema.Generic;
+    export namespace Generic {
+      export type Mono = Facet_Schema.Generic.Mono;
+      export type Multi = Facet_Schema.Generic.Multi;
+    }
+
+    export type Suggested = Facet_Schema.Suggested;
+    export namespace Suggested {
+      export type Mono = Facet_Schema.Suggested.Mono;
+      export type Multi = Facet_Schema.Suggested.Multi;
+    }
+
+    export type Readonly = Facet_Schema.Readonly
+    export namespace Readonly {
+      export type Mono = Facet_Schema.Readonly.Mono;
+      export type Multi = Facet_Schema.Readonly.Multi;
+    }
+  }
+
   export namespace Mode {
-    export type Mono = ModeNS.Generic.Mono;
-    export type Multi = ModeNS.Generic.Multi;
-    export type System = ModeNS.Generic.System;
+    export type Generic = Mode_Schema.Generic;
+    export namespace Generic {
+      export type Mono = Mode_Schema.Generic.Mono;
+      export type Multi = Mode_Schema.Generic.Multi;
+      export type System = Mode_Schema.Generic.System;
+    }
+
+    export type Suggested = Mode_Schema.Suggested;
+    export namespace Suggested {
+      export type Mono = Mode_Schema.Suggested.Mono;
+      export type Multi = Mode_Schema.Suggested.Multi;
+      export type System = Mode_Schema.Suggested.System;
+    }
+
+    export type Readonly = Mode_Schema.Readonly
+    export namespace Readonly {
+      export type Mono = Mode_Schema.Readonly.Mono;
+      export type Multi = Mode_Schema.Readonly.Multi;
+      export type System = Mode_Schema.Readonly.System;
+    }
   }
 }
-
-export namespace Suggested {
-  export type Facet = Facet.Mono;
-  export namespace Facet {
-    export type Mono = FacetNS.Suggested.Mono
-    export type Multi = FacetNS.Suggested.Multi
-  }
-
-  export type Mode = Mode.Mono | Mode.System;
-  export namespace Mode {
-    export type Mono = ModeNS.Suggested.Mono;
-    export type Multi = ModeNS.Suggested.Multi;
-    export type System = ModeNS.Suggested.System;
-  }
-}
-
-export * as Facet from "./facet";
-export * as Mode from "./mode";
