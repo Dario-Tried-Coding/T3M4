@@ -1,4 +1,4 @@
-import { COLOR_SCHEME, CS_INDICATOR, MODES, STRATS } from "../../constants";
+import { COLOR_SCHEME, CS_INDICATOR, MODES } from "../../constants";
 import type { Mode_Schema as Schema } from "../../schema/facets/mode";
 
 type Base = { store?: boolean; controller?: CS_INDICATOR | CS_INDICATOR[] };
@@ -13,12 +13,10 @@ export namespace Mode_Config {
         : never;
   export namespace Dynamic {
     export type Mono<Sc extends Schema.Generic.Mono> = Base & {
-      strategy: STRATS["mono"];
       default: Sc;
       colorScheme: COLOR_SCHEME;
     };
     export type Multi<Sc extends Schema.Generic.Multi> = Base & {
-      strategy: STRATS["multi"];
       default: Sc[number];
       colorSchemes: Record<Sc[number], COLOR_SCHEME>;
     };
@@ -39,22 +37,19 @@ export namespace Mode_Config {
       Sc extends Required<Pick<Schema.Generic.System, "custom">>
         ? { colorSchemes: Record<Sc["custom"][number], COLOR_SCHEME> }
         : {};
-    export type System<Sc extends Schema.Generic.System> = Base & { strategy: STRATS["system"] } & Default<Sc> &
-      Fallback<Sc> &
-      Color_Schemes<Sc>;
+    export type System<Sc extends Schema.Generic.System> = Base & Default<Sc> & Fallback<Sc> & Color_Schemes<Sc>;
   }
 
   export type Static = Static.Mono | Static.Multi | Static.System;
   export namespace Static {
-    export type Mono = Base & { strategy: STRATS["mono"]; default: string; colorScheme: COLOR_SCHEME };
+    export type Mono = Base & { default: string; colorScheme: COLOR_SCHEME };
     export type Multi = Base & {
-      strategy: STRATS["multi"];
       default: string;
       colorSchemes: Record<string, COLOR_SCHEME>;
     };
     export type System = Base & {
-      strategy: STRATS["system"];
       default: string;
+      fallback?: string;
       colorSchemes?: Record<string, COLOR_SCHEME>;
     };
   }

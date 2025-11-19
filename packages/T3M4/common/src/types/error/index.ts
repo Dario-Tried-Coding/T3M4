@@ -1,4 +1,4 @@
-import { Schema } from "@t3m4/types";
+import { Config, Schema } from "@t3m4/types";
 import { ErrorCode } from "./error-codes";
 
 export type PathSegment = string | number;
@@ -12,10 +12,8 @@ export interface ValidationError {
   value: unknown;
 }
 
-export interface ValidationResult<Valid = Schema.Generic> {
+export interface ValidationResult<Valid extends Schema.Generic | Config.Static> {
   ok: boolean; // true se nessun errore
   value: Valid; // oggetto sanificato (anche se ok=false)
   errors: ValidationError[];
 }
-
-export type { ErrorCode } from "./error-codes";

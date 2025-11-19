@@ -1,4 +1,6 @@
-import { ErrorCode, PathSegment, ValidationError, ValidationResult } from "../types/error";
+import { Config, Schema } from "@t3m4/types";
+import { PathSegment, ValidationError, ValidationResult } from "../types/error";
+import { ErrorCode } from "../types/error/error-codes";
 
 export function createError(params: {
   code: ErrorCode;
@@ -20,28 +22,28 @@ export function pushError(errors: ValidationError[], error: ValidationError): vo
 }
 
 function groupErrorsByIsland(errors: ValidationError[]) {
-  const groups: Record<string, ValidationError[]> = {}
+  const groups: Record<string, ValidationError[]> = {};
 
   for (const e of errors) {
-    const island = e.path[0] ?? "root"
+    const island = e.path[0] ?? "root";
 
-    if (!groups[island]) groups[island] = []
-    groups[island].push(e)
+    if (!groups[island]) groups[island] = [];
+    groups[island].push(e);
   }
 
-  return groups
+  return groups;
 }
 
-export function logValidationResult(result: ValidationResult) {
-  if (result.ok) return
+export function logValidationResult(result: ValidationResult<Schema.Generic | Config.Static>) {
+  if (result.ok) return;
 
-  const groups = groupErrorsByIsland(result.errors)
+  const groups = groupErrorsByIsland(result.errors);
 
   for (const [island, errs] of Object.entries(groups)) {
     console.log(`\n\x1b[31m✖ Errors in island "${island}":\x1b[0m\n`);
 
     for (const e of errs) {
-      const path = e.path.join(" > ")
+      const path = e.path.join(" > ");
       console.log(`  • ${e.message}\n    ↳ Path: ${path}\n    ↳ Code: ${e.code}\n`);
     }
   }
