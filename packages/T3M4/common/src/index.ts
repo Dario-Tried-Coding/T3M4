@@ -1,22 +1,32 @@
 import { Config, Schema } from "@t3m4/types";
-import { buildFacets } from "./helpers/build-facets";
-import { buildOptions } from "./helpers/build-options";
+import { buildFacets } from "./builders/build-facets";
+import { buildOptions } from "./builders/build-options";
 import { logValidationResult } from "./helpers/error";
 import { validateSchema } from "./validators/schema/validate-schema";
+import { validateConfig } from "./validators/config/validate-config";
+import { buildStrategies } from "./builders/build-strategies";
 
 export function defineConfig<const Sc extends Schema.Generic>(schema: Sc, config: Config.Dynamic<Sc>) {
-  const result = validateSchema(schema);
+  const schemaValidation = validateSchema(schema);
+  const configValidation = validateConfig(schemaValidation.value, config);
 
-  if (!result.ok) {
+  if (!schemaValidation.ok) {
     console.warn("[T3M4] Invalid configuration detected:");
-    logValidationResult(result);
+    logValidationResult(schemaValidation);
   }
 
-  const { value: validatedSchema } = result;
+  if (!configValidation.ok) {
+    console.warn("[T3M4] Invalid configuration detected:");
+    logValidationResult(configValidation);
+  }
+
+  const { value: validatedSchema } = schemaValidation;
+  const { value: validatedConfig } = configValidation;
 
   const islands = Object.keys(validatedSchema);
+  const strategies = buildStrategies(validatedSchema);
   const facets = buildFacets(validatedSchema);
   const options = buildOptions(validatedSchema);
 
-  return { islands, facets, options };
+  return { islands, strategies, facets, options };
 }

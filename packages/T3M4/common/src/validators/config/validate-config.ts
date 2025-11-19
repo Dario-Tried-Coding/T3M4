@@ -1,10 +1,11 @@
-import { Config } from "@t3m4/types";
+import { Config, Schema } from "@t3m4/types";
 import { isPlainObject } from "../../helpers";
 import { createError, pushError } from "../../helpers/error";
 import { ValidationError, ValidationResult } from "../../types/error";
 import { ErrorCode } from "../../types/error/error-codes";
+import { validateIsland } from "./validate-island";
 
-export function validateConfig(schema: Config.Static, input: unknown): ValidationResult<Config.Static> {
+export function validateConfig(schema: Schema.Generic, input: unknown): ValidationResult<Config.Static> {
   const errors: ValidationError[] = [];
   const sanitized: Config.Static = {};
 
@@ -72,7 +73,7 @@ export function validateConfig(schema: Config.Static, input: unknown): Validatio
     ok: errors.length === 0,
     value: sanitized,
     errors,
-  }
+  };
 
   return result;
 }

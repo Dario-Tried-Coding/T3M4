@@ -18,6 +18,7 @@
     "state": "Atom",
     "signatures": "Custom",
     "boot": "Command",
-    "T3M4": "../../../../icons/T3M4-folder"
+    "T3M4": "../../../../icons/T3M4-folder",
+    "builders": "Dist"
   }
 }
