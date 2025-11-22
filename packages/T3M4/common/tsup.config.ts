@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig(() => {
   return [
     {
-      entry: ["src/index.ts"],
+      entry: ["src/index.ts", "src/types/index.ts"],
       sourcemap: false,
       minify: true,
       dts: true,

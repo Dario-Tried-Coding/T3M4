@@ -1,1 +1,1 @@
-export type { Config, CONSTANTS, Facets, Options, Schema, Signatures } from "./types";
+export type { Config, CONSTANTS, Facets, Islands, Options, Schema, Signatures, State, Strategies } from "./types";

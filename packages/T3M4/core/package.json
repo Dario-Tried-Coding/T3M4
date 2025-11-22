@@ -1,5 +1,5 @@
 {
-  "name": "@t3m4/common",
+  "name": "@t3m4/core",
   "version": "0.0.0",
   "private": false,
   "description": "",
@@ -22,27 +22,29 @@
     "type": "git",
     "url": "https://github.com/Dario-Tried-Coding/T3M4"
   },
+  "keywords": [
+    "theming",
+    "typescript"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./types": {
-      "import": "./dist/types/index.mjs",
-      "types": "./dist/types/index.d.ts",
-      "default": "./dist/types/index.js"
+    "./boot": {
+      "import": "./dist/generated/boot.mjs",
+      "types": "./dist/generated/boot.d.ts",
+      "default": "./dist/generated/boot.js"
     }
   },
-  "keywords": [
-    "theming",
-    "typescript"
-  ],
+  "dependencies": {
+    "@t3m4/common": "workspace:*"
+  },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@t3m4/types": "workspace:*",
-    "tsup": "^8.5.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
   }

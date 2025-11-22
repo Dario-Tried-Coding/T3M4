@@ -16,6 +16,6 @@ export namespace Facet_Config {
   export type Static = Static.Mono | Static.Multi;
   export namespace Static {
     export type Mono = Base & { default: string };
-    export type Multi = Base & { default: string[] };
+    export type Multi = Base & { default: string };
   }
 }

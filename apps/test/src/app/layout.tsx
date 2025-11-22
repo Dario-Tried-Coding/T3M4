@@ -1,3 +1,4 @@
+import { T3M4_BOOT } from "@t3m4/core/boot";
 import type { Metadata } from "next";
 import "../styles/globals.css";
 
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: T3M4_BOOT }} />
+        {children}
+      </body>
     </html>
   );
 }
